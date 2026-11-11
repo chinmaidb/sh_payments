@@ -1,127 +1,134 @@
 {%- from "templates/print_formats/standard_macros.html" import add_header -%}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
-    crossorigin="anonymous"></script>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+  crossorigin="anonymous"
+/>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+  crossorigin="anonymous"
+></script>
 <style>
-    @media print {
-        .container {
-            width: 21cm;
-            height: 29.7cm;
-            padding: 2cm;
-        }
-
-        .card {
-            page-break-inside: avoid;
-        }
+  @media print {
+    .container {
+      width: 21cm;
+      height: 29.7cm;
+      padding: 2cm;
     }
 
     .card {
-        background-color: #fff !important;
-        border: 3px solid #222 !important;
-        border-radius: 18px !important;
-        box-shadow: none !important;
+      page-break-inside: avoid;
     }
+  }
 
-    .card-header {
-        background-color: #fff !important;
-        border-bottom: none !important;
-        border-radius: 16px 16px 0 0 !important;
-        padding: 0.5rem 1rem !important;
-        position: relative;
-    }
+  .card {
+    background-color: #fff !important;
+    border: 3px solid #222 !important;
+    border-radius: 18px !important;
+    box-shadow: none !important;
+  }
 
-    .print-heading-label {
-        color: #000 !important;
-        background-color: #fff !important;
-        font-weight: bold !important;
-        font-size: 1rem !important;
-        letter-spacing: 2px;
-        margin-bottom: 0;
-    }
+  .card-header {
+    background-color: #fff !important;
+    border-bottom: none !important;
+    border-radius: 16px 16px 0 0 !important;
+    padding: 0.5rem 1rem !important;
+    position: relative;
+  }
 
-    .rashid-box {
-        display: inline-block;
-        background-color: #fff !important;
-        color: #000;
-        font-weight: bold;
-        border-radius: 6px;
-        padding: 0.1em 1.2em;
-        font-size: 1.3rem;
-        /* Remove absolute positioning */
-        position: static;
-        left: auto;
-        top: auto;
-        transform: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
-        margin-top: 0.3rem;
-        /* Add some spacing below the heading */
-    }
+  .print-heading-label {
+    color: #000 !important;
+    background-color: #fff !important;
+    font-weight: bold !important;
+    font-size: 1rem !important;
+    letter-spacing: 2px;
+    margin-bottom: 0;
+  }
+
+  .rashid-box {
+    display: inline-block;
+    background-color: #fff !important;
+    color: #000;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 0.1em 1.2em;
+    font-size: 1.3rem;
+    /* Remove absolute positioning */
+    position: static;
+    left: auto;
+    top: auto;
+    transform: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.07);
+    margin-top: 0.3rem;
+    /* Add some spacing below the heading */
+  }
 </style>
 <div class="print-format bg-white">
-    <div class="card border-dark">
-        <div class="card-header text-center print-heading position-relative">
-            <div style="font-size: 1.4rem;">ॐ</div>
-            <h5 class="print-heading-label">ವಿಕಾಸ ಟ್ರಸ್ಟ್</h5>
-            <p class="bg-white"><strong>&#39;ಮಾಧವನೆಲೆ&#39;</strong>,ಕಲ್ಲಹಳ್ಳಿ ಅಭೀಷ್ಟವರದ ಗಣಪತಿ ದೇವಸ್ಥಾನ ಎದುರು, ವಿನೋಬನಗರ, ಶಿವಮೊಗ್ಗ-577204
-                <span>
-                    <strong>&#39;ಮಧುಕೃಪಾ&#39;</strong>, ಪಂಚವಟಿ ಕಾಲೋನಿ, ಶಿವಮೊಗ್ಗ-577202
-                </span>
-                <span>
-                    Donations are exempted U/S 80G of the Income Tax Act 1961 as per T-1273/80G/CIT-DVG/09-10 dated
-                    29-09-2009 PAN No AAATV7421K
-                </span>
-            </p>
-            <div class="rashid-box">ರಶೀದಿ</div>
-        </div>
-        <div class="card-body px-4 py-3">
-            <div class="row mb-2">
-                <div class="col-6">
-                    <strong>No.</strong>
-                    <span class="ms-2">{{ doc.name }}</span>
-                </div>
-                <div class="col-6 text-end">
-                    <strong>Date:</strong>
-                    <span class="ms-2">{{ frappe.utils.format_date(doc.creation) }}</span>
-                </div>
-            </div>
-            <div class="border border-dark rounded p-3 mb-3 bg-white">
-                <div class="row mb-2">
-                    <div class="col-12">
-                        <strong>Received with thanks from Sri/Smt.</strong>
-                        {{ doc.get("party_name") or doc.get("party") or "" }}
-                        <strong>towards Madhavanele on account of</strong>
-                        {{ doc.get("remarks") or doc.get("remarks_html") or "" }}
-                        <strong>an amount of Rs.</strong>
-                        {{ doc.get("base_in_words") }}
-                        <strong>through</strong>
-                        <strong>{{doc.get('mode_of_payment') or ''}}</strong>
-                        <span>
-                            {{doc.get('reference_no') or ''}} <strong>dated.</strong>
-                            {{ doc.get('reference_date') and frappe.utils.formatdate(doc.get('reference_date')) or '' }}
-                            <span>
-                                {{ doc.get("party_bank_account") or "-" }}
-                            </span>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="d-flex align-items-end w-100">
-
-                    <div class="border border-black rounded p-2 text-center" style="font-size:1.5rem;">
-                        {{ frappe.format(doc.get("paid_amount") or doc.get("received_amount") or
-                        doc.get("base_paid_amount") or 0,
-                        {'fieldtype': 'Currency'}) }}
-                    </div>
-
-                    <div class="px-4">Signature (Donor)</div>
-
-                    <div class="ms-auto px-4 text-end">Signature (Receiver)</div>
-
-                </div>
-            </div>
-        </div>
+  <div class="card border-dark">
+    <div class="card-header text-center print-heading position-relative">
+      <div style="font-size: 1.4rem">ॐ</div>
+      <h5 class="print-heading-label">VIKASA TRUST</h5>
+      <p class="bg-white">
+        MADHAVANELE, NEAR ABHISTHAVARADA GANAPATHI TEMPLE. KHB COLONY
+        KALLAHALLI, VINOBANAGARA, SHIVAMOGGA - 577204
+        <span>
+          Donations are exempted U/S 80G of the Income Tax Act 1961 as per
+          T-1273/80G/CIT-DVG/09-10 dated 29-09-2009 PAN No AAATV7412K
+        </span>
+      </p>
+      <div class="rashid-box">RECEIPT</div>
     </div>
+    <div class="card-body px-4 py-3">
+      <div class="row mb-2">
+        <div class="col-6">
+          <strong>NO.</strong>
+          <span class="ms-2">{{ doc.name }}</span>
+        </div>
+        <div class="col-6 text-end">
+          <strong>Date:</strong>
+          <span class="ms-2"
+            >{{ frappe.utils.format_date(doc.posting_date) }}</span
+          >
+        </div>
+      </div>
+      <div class="border border-dark rounded p-3 mb-3 bg-white">
+        <div class="row mb-2">
+          <div class="col-12">
+            RECEIVED WITH THANKS From Sri/Smt.
+            <strong
+              >{{ doc.get("party_name") or doc.get("party") or "" }}</strong
+            >
+            AN AMOUNT OF Rs. {{ doc.get("base_in_words") }} through
+            <strong>{{doc.get('mode_of_payment') or ''}}</strong>
+            <span>
+              {{ '#' ~ doc.get('reference_no') if doc.get('reference_no') else
+              '' }} <strong>DT </strong>
+              {{ doc.get('posting_date') and
+              frappe.utils.format_date(doc.get('posting_date')) or '' }}
+              <strong> ON ACCOUNT OF </strong>
+              {{ doc.get("remarks") or doc.get("remarks_html") or "" }}
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="d-flex align-items-end w-100">
+          <div
+            class="border border-black rounded p-2 text-center"
+            style="font-size: 1.5rem"
+          >
+            {{ frappe.format(doc.get("paid_amount") or
+            doc.get("received_amount") or doc.get("base_paid_amount") or 0,
+            {'fieldtype': 'Currency'}) }}
+          </div>
+
+          <div class="px-4">Signature (Donor)</div>
+
+          <div class="ms-auto px-4 text-end">Signature (Receiver)</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
