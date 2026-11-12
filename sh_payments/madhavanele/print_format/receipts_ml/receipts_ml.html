@@ -101,14 +101,13 @@
               >{{ doc.get("party_name") or doc.get("party") or "" }}</strong
             >
             AN AMOUNT OF Rs. {{ doc.get("base_in_words") }} through
-            <strong>{{doc.get('mode_of_payment') or ''}}</strong>
+            {{doc.get('mode_of_payment') or ''}}
             <span>
               {{ '#' ~ doc.get('reference_no') if doc.get('reference_no') else
-              '' }} <strong>DT </strong>
-              {{ doc.get('posting_date') and
-              frappe.utils.format_date(doc.get('posting_date')) or '' }}
-              <strong> ON ACCOUNT OF </strong>
-              {{ doc.get("remarks") or doc.get("remarks_html") or "" }}
+              '' }} DT {{ doc.get('posting_date') and
+              frappe.utils.format_date(doc.get('posting_date')) or '' }} ON
+              ACCOUNT OF {{ doc.get("remarks") or doc.get("remarks_html") or ""
+              }}
             </span>
           </div>
         </div>

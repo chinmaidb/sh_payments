@@ -116,15 +116,10 @@
       <div class="row mb-2">
         <div class="col-12">
           Paid to SMT/SRI {{ doc.get("party_name") or doc.get("party") or "" }}
-          <strong>an amount of Rs.</strong>
-          {{ doc.get("base_in_words") }}
-          <strong> via </strong>
-          <strong
-            >{{doc.get('mode_of_payment') or ''}} # {{doc.get('reference_no') or
-            ''}}</strong
-          >
-          <strong> on account of </strong>
-          {{ doc.get("remarks") or doc.get("remarks_html") or "" }}
+          an amount of Rs. {{ doc.get("base_in_words") }} via
+          >{{doc.get('mode_of_payment') or ''}} # {{doc.get('reference_no') or
+          ''}} on account of {{ doc.get("remarks") or doc.get("remarks_html") or
+          "" }}
         </div>
       </div>
       <div class="row mt-3 align-items-center">
